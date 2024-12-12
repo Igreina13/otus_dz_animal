@@ -18,3 +18,4 @@ public class Duck extends AbsAnimal implements IFlaying{
         System.out.println("Кря кря кря");
     }
 }
+//gigi
