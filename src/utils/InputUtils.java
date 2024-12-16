@@ -1,8 +1,5 @@
 package utils;
 
-import data.ColorData;
-import data.CommandsData;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -13,8 +10,6 @@ public class InputUtils {
     private  Scanner scanner;
 
     private EnumUtils enumUtils = new EnumUtils();
-
-    private NumbersUtils numbersUtils = new NumbersUtils();
 
     public InputUtils(Scanner scanner) {
         this.scanner = scanner;
@@ -44,19 +39,12 @@ public class InputUtils {
 
         while (true) {
             System.out.println(inputMessage);
-        String numberUserInput = scanner.next();
+            String numberUserInput = scanner.next().trim();
 
-        if (!numbersUtils.isNumber(numberUserInput)) {
-            System.out.println(errorMassage);
-            continue;
+            if (!numberUserInput.matches("^[0-9]{1,3}$"))
+                System.out.println(errorMassage);
+            else
+                return Integer.parseInt(numberUserInput);
         }
-
-        int number = Integer.parseInt(numberUserInput);
-        if (number <= 0 || number > 20) {
-            System.out.println(errorMassage);
-            continue;
-        }
-        return number;
-    }
     }
 }
